@@ -132,7 +132,8 @@ class PiPointVAE(nn.Module):
         save_dir.mkdir(parents=True, exist_ok=True)
         torch.save(
             {
-                "config": {**self.config, **kwargs},
+                "config": self.config,
+                "training_cfg": {**kwargs},
                 "model_state_dict": self.state_dict(),
             },
             save_dir / "saved_model.pt",
