@@ -4,7 +4,7 @@ from pathlib import Path
 import numpy as np
 
 from models.vae import PiPointVAE
-from visualize.utils import plot_points
+from utils.utils import plot_points
 
 
 def parse_args():

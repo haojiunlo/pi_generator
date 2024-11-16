@@ -10,7 +10,8 @@ from tqdm import tqdm
 
 from dataset_utils.dataset import PiPointDataset
 from models.vae import PiPointVAE
-from visualize.utils import visualize_results_pil
+from utils.utils import compare_distributions
+from utils.utils import visualize_results_pil
 
 
 def parse_args():
@@ -204,13 +205,15 @@ def main(args):
     print(f"generated_points save at {saved_dir}")
 
     # Create visualization
+    real_points = dataset.points.numpy().astype(int)
     img = visualize_results_pil(
-        dataset.points.numpy().astype(int),
+        real_points,
         generated_points,
         image_size=(300, 300),
         point_size=1,
     )
     img.save(saved_dir / "visualization.png")
+    compare_distributions(real_points, generated_points, saved_dir)
     print(f"comparison image save at {saved_dir}")
 
 
