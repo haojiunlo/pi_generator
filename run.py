@@ -195,6 +195,7 @@ def main(args):
         beta=args.beta,
         num_epochs=args.num_epochs,
         learning_rate=args.learning_rate,
+        batch_size=args.batch_size,
     )
     print(f"model save at {saved_dir}")
 
